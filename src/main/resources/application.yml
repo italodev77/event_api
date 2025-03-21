@@ -1,8 +1,6 @@
 spring:
-  apllication:
+  application:
     name: eventapi
-flyway:
-  enabled: false
 
   datasource:
     url: jdbc:postgresql://localhost:5432/eventDB
@@ -12,3 +10,8 @@ flyway:
 
   jpa:
     show-sql: true
+
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
