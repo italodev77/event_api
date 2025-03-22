@@ -1,36 +1,36 @@
 package dev.api.EventApi.infrastructure.mapper;
 
+import dev.api.EventApi.blindado.entities.Event;
 import dev.api.EventApi.infrastructure.dtos.EventDTO;
-import dev.api.EventApi.infrastructure.persistence.EventEntity;
 import org.springframework.stereotype.Component;
 
 @Component
 public class EventMapper {
-    public EventEntity toEntity(EventDTO eventDTO){
-        EventEntity eventEntity = new EventEntity();
-        eventEntity.setId(eventDTO.id());
-        eventEntity.setDescription(eventDTO.description());
-        eventEntity.setName(eventDTO.name());
-        eventEntity.setIdentifier(eventDTO.identifier());
-        eventEntity.setStartDate(eventDTO.startDate());
-        eventEntity.setEndDate(eventDTO.endDate());
-        eventEntity.setCapacity(eventDTO.capacity());
-        eventEntity.setCategory(eventDTO.category());
+    public Event toEntity(EventDTO eventDTO) {
+        return new Event(
+                eventDTO.id(),
+                eventDTO.name(),
+                eventDTO.description(),
+                eventDTO.startDate(),
+                eventDTO.endDate(),
+                eventDTO.identifier(),
+                eventDTO.local(),
+                eventDTO.capacity(),
+                eventDTO.category()
+        );
+    }
 
-        return eventEntity;
-    };
-
-    public EventDTO toDTO(EventEntity eventEntity) {
+    public EventDTO toDTO(Event event) {
         return new EventDTO(
-                eventEntity.getId(),
-                eventEntity.getName(),
-                eventEntity.getDescription(),
-                eventEntity.getStartDate(),
-                eventEntity.getEndDate(),
-                eventEntity.getIdentifier(),
-                eventEntity.getLocal(),
-                eventEntity.getCapacity(),
-                eventEntity.getCategory()
+                event.id(),
+                event.name(),
+                event.description(),
+                event.startDate(),
+                event.endDate(),
+                event.identifier(),
+                event.local(),
+                event.capacity(),
+                event.category()
         );
     }
 
